@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <h3>CHUYỂN ĐỔI GIỮA FEET VÀ METERS</h3>
+    <select id="selectTemp" onchange="tempChanged()"style="width: 120px">
+        <option value="Feet">Feet --> Meters</option>
+        <option value="Meters">Meters --> Feet</option>
+    </select>
+</form>
+    <br/>
+    <fieldset style="width: 350px">
+        <table>
+            <tr>
+                 <td width="100px">
+                     <span id="spaninput">Feet :</span>
+                 </td>
+                <td>
+                    <input type="number" id="inputTemp" placeholder="insert information" oninput="convertAndShow(this.value)">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span id="spanOut">Meters :</span>
+                </td>
+                <td>
+                    <span id="output"></span>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+<script>
+    function tempChanged() {
+        let value = document.getElementById("inputTemp").value;
+        let spanIn = document.getElementById("spaninput").innerHTML;
+        let spanOut = document.getElementById("spanOut").innerHTML;
+        let typeTemp = document.getElementById("selectTemp").value;
+
+    }
+    if (typeTemp === 'Feet') {
+        spanIn = "Feet";
+        spanOut = "Meters";
+        let inputT = parseFloat(value);
+        let outputTemp = inputT * 0.305;
+        document.getElementById("output").innerHTML = outputTemp;
+
+    } else if (typeTemp === 'Meter') {
+        spanIn = "Meters";
+        spanOut = "Feet";
+        let inputT = parseFloat(value);
+        let outputTemp = inputT * 3.279;
+        document.getElementById("output").innerHTML = outputTemp;
+    }
+
+    function convertAndShow(value) {
+        let typeTemp = document.getElementById("selectTemp").value;
+        if (typeTemp === 'Feet') {
+            let inputT = parseFloat(value);
+            let outputTemp = inputT * 0.305;
+            document.getElementById("output").innerHTML = outputTemp;
+        } else if (typeTemp === 'Meters') {
+            let inputT = parseFloat(value);
+            let outputTemp = inputT * 3.279;
+            document.getElementById("output").innerHTML = outputTemp;
+        }
+    }
+</script>
+
+</body>
+</html>
